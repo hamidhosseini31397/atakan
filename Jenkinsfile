@@ -4,26 +4,35 @@ pipeline {
         stage('Build test hamid') {
             steps {
                 script {
-                    sh 'mvn compile'
+                    // Navigera till TrailrunnerProject-mappen
+                    dir('TrailrunnerProject') {
+                        sh 'mvn compile'
+                    }
                 }
             }
         }
  
         stage('Test') {
             steps {
-                sh 'mvn test'
+                script {
+                    // Navigera till TrailrunnerProject-mappen
+                    dir('TrailrunnerProject') {
+                        sh 'mvn test'
+                    }
+                }
             }
         }
  
         stage('Post Test') {
             steps {
                 script {
-                   
-                    junit '**/TEST*.xml'
+                    // Navigera till TrailrunnerProject-mappen
+                    dir('TrailrunnerProject') {
+                        // Kör junit-kommandot för att läsa in testrapporter
+                        junit '**/TEST*.xml'
+                    }
                 }
             }
         }
- 
     }
 }
-
