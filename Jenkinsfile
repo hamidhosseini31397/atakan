@@ -35,7 +35,8 @@ pipeline {
         stage('Build and Test Python Project') {
             steps {
                 script {
-                    bat "python -m robot C:/Users/kinal/.jenkins/workspace/Labb Jenkins/Selenium/labSelenium.robot"
+                    bat 'python -m robot C:/Users/kinal/.jenkins/workspace/Labb_Jenkins/Selenium/labSelenium.robot'
+                                      
                 }
             }
             post {
